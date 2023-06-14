@@ -1,0 +1,24 @@
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\bin\Debug\net7.0\HandMadeStore.Utility.deps.json
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\bin\Debug\net7.0\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\bin\Debug\net7.0\HandMadeStore.Utility.pdb
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\refint\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.pdb
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\ref\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\bin\Debug\net7.0\HandMadeStore.Utility.deps.json
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\bin\Debug\net7.0\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\bin\Debug\net7.0\HandMadeStore.Utility.pdb
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\refint\HandMadeStore.Utility.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\HandMadeStore.Utility.pdb
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.Utility\obj\Debug\net7.0\ref\HandMadeStore.Utility.dll

@@ -1,0 +1,123 @@
+﻿@model ProductVM
+@{
+ 
+    ViewData["Title"] = "Update";
+}
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.ImageUrl" hidden />
+
+    <div class="row">
+
+
+        <h2 class="text-primary">@(Model.Product.Id != 0 ? "Update" : "Create") Product</h2>
+        <div class="col-10">
+
+            <div class="mb-3">
+                <label asp-for="Product.Name"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Product.Description"></label>
+                <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-2">
+            <img id="Img" src="@Model.Product.ImageUrl" class="img-thumbnail" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="mb-3 col-sm-4">
+            <label asp-for="Product.Price"></label>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-sm-4">
+            <label asp-for="Product.Price10Plus"></label>
+            <input asp-for="Product.Price10Plus" class="form-control" />
+            <span asp-validation-for="Product.Price10Plus" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-sm-4">
+            <label asp-for="Product.Price30Plus"></label>
+            <input asp-for="Product.Price30Plus" class="form-control" />
+            <span asp-validation-for="Product.Price30Plus" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-12">
+            <label asp-for="Product.ImageUrl"></label>
+            <input id="uploadedFile" onchange="LoadFile(event)" name="file" type="file" asp-for="Product.ImageUrl" class="form-control" />
+            <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label asp-for="Product.CategoryId"></label>
+            <Select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                <option disabled selected>--Select Category</option>
+            </Select>
+            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-sm-6">
+            <label asp-for="Product.BrandId"></label>
+            <Select asp-for="Product.BrandId" asp-items="@Model.BrandList" class="form-select">
+                <option disabled selected>--Select Brand</option>
+            </Select>
+            <span asp-validation-for="Product.BrandId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        @if (Model.Product.Id != 0)
+        {
+            <button type="submit" class="btn btn-primary w-50 me-1">
+                <i class="fa-solid fa-pen-to-square me-1"></i> Update
+            </button>
+        }
+        else
+        {
+            <button onclick="validateInput()" type="submit" class="btn btn-primary w-50 me-1">
+                <i class="fa-solid fa-plus me-1"></i>
+                 Create</button>
+        }
+        <a asp-action="Index" class="btn btn-secondary w-50">
+            <i class="fa-solid fa-right-from-bracket me-1"></i>  Back to List
+        </a>
+    </div>
+
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        const validateInput = () => {
+        if ($("#uploadedFile").val() == "") {
+            event.preventDefault();
+            Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please upload an image!'
+            })
+            }
+
+
+        }
+
+    
+
+        var LoadFile = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var Image = document.getElementById("Img");
+                Image.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0])
+        }
+    </script>
+    }
+
+

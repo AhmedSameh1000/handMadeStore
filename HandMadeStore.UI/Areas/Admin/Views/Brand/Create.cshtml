@@ -1,0 +1,32 @@
+﻿@model Brand
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Brand</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>       
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary w-50 me-1"><i class="fa-solid fa-plus me-1"></i> Create</button>
+            <a asp-action="Index" class="btn btn-secondary w-50">
+                <i class="fa-solid fa-right-from-bracket me-1"></i>    Back to List
+            </a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+    }
+

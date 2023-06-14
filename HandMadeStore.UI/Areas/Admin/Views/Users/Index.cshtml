@@ -1,0 +1,87 @@
+﻿@using Identity.Models.DTOs;
+@model List<UserViewModel>
+@{
+    ViewData["Title"] = "All Users";
+}
+<h1>Users</h1>
+
+<a class="btn btn-outline-primary mb-3" asp-action="Add">Create new User</a>
+@if(Model.Count==0){
+    <h3>No User Found</h3>
+}
+else
+{
+      <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+       
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var User in Model)
+                {
+                    <tr>
+                        
+                        <td>@User.Name</td>
+                        <td>@User.Email</td>
+                    @if (User.Roles.Count() == 0)
+                    {
+                        <td>No Roles found</td>
+
+                    }
+                    else
+                    {
+                    <td>@string.Join(",",User.Roles)</td>
+                        
+                    }
+
+                        <td style="display:flex;justify-content:center;gap:10px"> 
+                            <a  asp-action="Mange" asp-route-id="@User.Id" class="  btn btn-primary">Mange</a>
+                            <a asp-action="Edit" asp-route-id="@User.Id" class=" btn btn-primary">Modify </a>
+                            <a id="del" onclick="Delete(event)"  class=" btn btn-danger Js-Deleted" data-id="@User.Id" >Delete </a>
+                        </td>
+                 
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    
+}
+@section Scripts{
+    <script>
+        const Delete=(e)=>{
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: `/Admin/Users/Delete?id=${e.srcElement.attributes[3].value}`,
+                        type: 'DELETE',
+                        success: function (data) {
+                            e.srcElement.parentNode.parentNode.remove();
+                            Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'User Deleted Successfuly',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                            })
+                            
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+}

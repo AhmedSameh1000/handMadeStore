@@ -1,0 +1,34 @@
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.deps.json
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.runtimeconfig.json
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.pdb
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.Models.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.Models.pdb
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.csproj.CopyComplete
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\refint\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.pdb
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.genruntimeconfig.cache
+C:\Users\Ahmed\Desktop\lastAndList\New folder\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\ref\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.deps.json
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.runtimeconfig.json
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.DataAccess.pdb
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.Models.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\bin\Debug\net7.0\HandMadeStore.Models.pdb
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.csproj.CopyComplete
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\refint\HandMadeStore.DataAccess.dll
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.pdb
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\HandMadeStore.DataAccess.genruntimeconfig.cache
+C:\Users\Ahmed\Desktop\lastAndList\HandMadeStore\HandMadeStore.DataAccess\obj\Debug\net7.0\ref\HandMadeStore.DataAccess.dll

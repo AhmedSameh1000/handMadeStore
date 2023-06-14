@@ -1,0 +1,102 @@
+﻿@using HandMadeStore.Models.Models.DTOs;
+@model CartVM
+ @{
+    ViewData["Title"] = "Shopping Cart Details";
+}
+<form >
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <div class="row">
+                    <div class="col-6">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <strong>Shopping Cart Details</strong>
+                    </div>
+                </div>
+            </div>
+            @if (Model.cartItems.Count() > 0)
+            {
+                
+            <div class="card-body">
+               @foreach (var item in Model.cartItems)
+                {
+                    <div class="row col-12 text-center">
+                        <div class="col-1">
+                            <img src="@item.Product.ImageUrl"
+                                 style="min-width:60px;"
+                                 class="rounded w-100" />
+                        </div>
+                        <div class="col-4 ps-2 py-4">
+                            <h5 class="text-dark"><strong>@item.Product.Name</strong></h5>
+                        </div>
+                        <div class="col-7">
+                            <div class="w-100 btn-group py-3">
+                                <a asp-action="Increment" asp-route-CartId="@item.Id" class="btn btn-success my-auto">
+                                    <i class="fa-solid fa-plus"></i>
+                                </a>
+                                <h5 class="text-dark px-3 py-2"><strong>@item.Price<span> x </span>@item.Count </strong></h5>
+                                <a asp-action="Decrement" asp-route-CartId="@item.Id" class="btn btn-warning my-auto">
+                                    <i class="fa-solid fa-minus"></i>
+                                </a>
+                                <a asp-action="Remove" asp-route-CartId="@item.Id" class="btn btn-danger ms-5 my-auto">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                }
+
+                <hr />
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between bg-light border border-primary">
+                                <h5 class="text-primary">Cart Items (Count)</h5>
+                                <h5 class="text-primary text-end">@Model.cartItems.Count()</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-4 ">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between bg-light border border-primary">
+                                <h5 class="text-primary">Pieces(Count)</h5>
+                                <h5 class="text-primary text-end">@Model.PiecesCount</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-4 ">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between bg-light border border-primary">
+                                <h5 class="text-primary">Total (EGP)</h5>
+                                <h5 class="text-primary text-end">@Model.CartTotal</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-info w-50 me-1"><i class="fa-solid fa-bag-shopping"></i>&nbsp; Continue Shopping</a>
+                    <button asp-action="Summary" type="submit" class="btn btn-primary w-50 me-1"><i class="fa-regular fa-credit-card"></i>&nbsp; Proceed To Pay</button>
+                </div>
+                </div>
+            }
+            else
+            {
+                <div class="text-center">
+                    <h4 class="display-4">Your cart is empty.</h4>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-info p-3 my-3">
+                        <i class="fa-solid fa-bag-shopping"></i>&nbsp;Continue Shopping
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</form>
+

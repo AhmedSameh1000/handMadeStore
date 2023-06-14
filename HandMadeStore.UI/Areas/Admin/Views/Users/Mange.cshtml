@@ -1,0 +1,45 @@
+﻿@using Identity.Models.AllRolesViewModel;
+@model UserRolesViewModel
+@{
+    ViewData["Title"] = "Mange Roles";
+}
+
+<h1>Mange User</h1>
+<form method="post" >
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>@Model.UserName</h2>
+            Add/Remove Roles
+        </div>
+        <div class="card-body">
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="UserName" />
+            @for (var i=0;i<Model.Roles.Count();i++)
+            {
+               <div class="form-check m-1">
+                    <input type="hidden" asp-for="@Model.Roles[i].RoleName" />
+                    <input type="hidden" asp-for="@Model.Roles[i].RoleId" />
+                   @*<input asp-for="@Model.Roles[i].IsSelected " class="form-check-input"/>*@
+
+                    <input  asp-for="@Model.Roles[i].IsSelected " type="checkbox" class="ui-checkbox p-5">
+
+
+                
+
+
+
+
+
+
+                    <label class="form-check-label">@Model.Roles[i].RoleName</label>
+               </div>                
+            }
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary"> Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+
+
+</form>

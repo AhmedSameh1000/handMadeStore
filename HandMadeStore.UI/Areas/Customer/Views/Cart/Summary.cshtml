@@ -1,0 +1,117 @@
+﻿@using HandMadeStore.Models.Models.DTOs;
+@using HandMadeStore.Utility;
+@using Microsoft.Extensions.Options;
+@inject IOptions<StripeSettings> Stripe
+@model CartVM
+@{
+    ViewData["Title"] = "Order Summary";
+}
+<form method="post">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-primary text-light ms-0 ">
+                <div class=" row ">
+                    <h5 class="col-6 pt-1">
+                        Order Summary
+                    </h5>
+                    <div class="col-6 text-end">
+                        <a asp-action="index" class="btn btn-outline-light"><i class="fa-solid fa-right-from-bracket me-1"></i>  Back to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid rounded">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 pb-2">
+                            <div class="row">
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-dark">Shipping Details:</span>
+                                </h4>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-3">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-9">
+                                    <input asp-for="OrderHeader.Name" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-3">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-9">
+                                    <input asp-for="OrderHeader.PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
+                                
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-3">
+                                    <label>Street Address</label>
+                                </div>
+                                <div class="col-9">
+                                    <input asp-for="OrderHeader.StreetAddress" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-3">
+                                    <label>City</label>
+                                </div>
+                                <div class="col-9">
+                                    <input asp-for="OrderHeader.City" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-3">
+                                    <label>Postal Code</label>
+                                </div>
+                                <div class="col-9">
+                                    <input asp-for="OrderHeader.PostalCode" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5 offset-lg-1">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-dark">Order Summary:</span>
+                            </h4>
+                            <ul class="list-group mb-3">
+                                @foreach (var item in Model.cartItems)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between text-light bg-primary border border-primary">
+                                        <div>
+                                            <h6>@item.Product.Name</h6>
+                                            <h6>Quantity: @item.Count x @item.Price</h6>
+                                        </div>
+                                        <span>@((item.Price* item.Count))</span>
+                                    </li>
+                                }
+                              
+
+                                <li class="list-group-item d-flex justify-content-between text-primary bg-light border border-primary">
+                                    <h5>Total (EGP)</h5>
+                                    <h5>@Model.OrderHeader.OrderTotal</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-12 col-md-8 pt-2">
+                        <h6 class="text-primary">Estimate Arrival Date: @DateTime.Now.AddDays(7).ToString("dd/MM/yyyy") - @DateTime.Now.AddDays(14).ToString("dd/MM/yyyy") Days</h6>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <button type="submit" value="Place Order" class="btn btn-primary form-control"><i class="fa-solid fa-money-check-dollar"></i>&nbsp;Checkout Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

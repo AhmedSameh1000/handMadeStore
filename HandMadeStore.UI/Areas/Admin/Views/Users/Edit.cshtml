@@ -1,0 +1,26 @@
+﻿@using Identity.Models.DTOs;
+@model ProfileFormViewModel
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+<form id="registerForm" asp-action="Edit" method="post">
+    <div class="row justify-content-between">
+        <h2 class="col-6">Edit User.</h2>
+        <a class="col-3 btn btn-outline-secondary" asp-action="Index">Back To List</a>
+    </div>
+    <hr />
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <div class="form-floating mb-3">
+        <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+        <label asp-for="Email">Email</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+   
+    <div class="form-floating mb-3">
+        <input asp-for="name" class="form-control" aria-required="true" placeholder="Last Name" />
+        <label asp-for="name">Last Name</label>
+        <span asp-validation-for="name" class="text-danger"></span>
+    </div> 
+    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+</form>
+

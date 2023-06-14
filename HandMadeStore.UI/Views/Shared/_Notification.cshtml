@@ -1,0 +1,12 @@
+﻿@{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    if (TempData["success"] != null)
+    {
+        <script type="text/javascript">
+            toastr.success('@TempData["success"]', 'MadeStore', { timeOut: 2000, closeButton: true, progressBar:true })
+        </script>
+        
+
+    }
+}

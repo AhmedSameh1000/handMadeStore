@@ -1,0 +1,34 @@
+﻿@using Identity.Models.DTOs;
+@using Microsoft.AspNetCore.Identity;
+@model List<IdentityRole>
+@{
+    ViewData["Title"] = "Mange Roles";
+}
+<h1> Roles</h1>
+<partial name="_RoleForm" model="new RoleViewModel()" />
+@if(Model.Count==0){
+    <h2>No Roles Found</h2>
+}
+else{
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Role Id</th>
+                <th scope="col">Role Name</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var Role in Model)
+            {
+                <tr>
+                    <td>@Role.Id</td>
+                    <td>@Role.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+  
+}
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

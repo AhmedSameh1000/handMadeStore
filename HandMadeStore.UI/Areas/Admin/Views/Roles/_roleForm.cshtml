@@ -1,0 +1,17 @@
+﻿@using Identity.Models.DTOs;
+@model RoleViewModel
+<form method="post"  asp-action="Add">
+
+    <div class="row justify-content-between">
+        <div class="input-grou col-9 mb-3">
+        <input asp-for="Name" class="form-control" placeholder="Role Name"  >
+
+        </div>
+       <div class="input-group-append col-3">
+        <button type="submit" class="btn btn-primary" >Add New Role</button>
+       </div>
+
+    </div>
+    
+    <span asp-validation-for="Name" class="text-danger"></span>
+</form>

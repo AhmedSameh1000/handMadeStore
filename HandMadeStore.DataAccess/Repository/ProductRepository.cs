@@ -18,6 +18,9 @@ namespace HandMadeStore.DataAccess.Repository
             var ProductTOUpdate = _context.Products.Find(product.Id);
             if (ProductTOUpdate != null)
             {
+                ProductTOUpdate.arabicName = product.arabicName;
+                ProductTOUpdate.arabicDescription = product.arabicDescription;
+
                 ProductTOUpdate.Name = product.Name;
                 ProductTOUpdate.Description = product.Description;
                 ProductTOUpdate.Price = product.Price;

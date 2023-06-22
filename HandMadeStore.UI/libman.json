@@ -5,6 +5,14 @@
     {
       "library": "sweetalert2@11.7.12",
       "destination": "wwwroot/sweetalert2/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@latest",
+      "destination": "wwwroot/js/signalr/",
+      "files": [
+        "dist/browser/signalr.min.js"
+      ]
     }
   ]
 }

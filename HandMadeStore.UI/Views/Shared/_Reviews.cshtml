@@ -1,0 +1,23 @@
+﻿@using HandMadeStore.Models.Models;
+@using System.Globalization;
+@foreach (var item in ViewData["Reviews"] as IEnumerable<Review>)
+{
+    <div>
+        <div class="row d-flex ">
+            <div class="d-flex flex-column">
+                <h4 class="ms-2 mb-0">@item.ApplicationUser.Name</h4>
+            </div>
+            <div class="ml-auto">
+                <p class="text-muted ms-2 mb-0">
+                    @item.ReviewDate.Value.ToString("f",CultureInfo.CreateSpecificCulture("en-US"))
+                </p>
+            </div>
+            <div class="row text-left">
+                <h5 class="ms-4 mt-1">@item.ReviewText</h5>
+            </div>
+            <div>
+                <hr />
+            </div>
+        </div>
+    </div>
+}

@@ -1,24 +1,35 @@
 ﻿@using Identity.Models.DTOs;
+@using Microsoft.AspNetCore.Localization;
 @model List<UserViewModel>
 @{
     ViewData["Title"] = "All Users";
 }
-<h1>Users</h1>
 
-<a class="btn btn-outline-primary mb-3" asp-action="Add">Create new User</a>
+@inject IViewLocalizer Localizer
+@{
+    var reqCulture = Context.Features.Get<IRequestCultureFeature>();
+    var Culture = reqCulture.RequestCulture.Culture.Name;
+    var isArabic = Culture == "ar-EG";
+}
+<div class="row justify-content-between">
+    <h1 class="col">@Localizer["Users"]</h1>
+
+    <a class="btn btn-outline-primary mb-3 col" asp-action="Add">@Localizer["Create"]</a>
+
+</div>
 @if(Model.Count==0){
-    <h3>No User Found</h3>
+    <h3>@Localizer["NoRoles"]</h3>
 }
 else
 {
       <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-       
-                    <th scope="col">Email</th>
-                    <th scope="col">Roles</th>
-                    <th scope="col" class="text-center">Actions</th>
+                <th scope="col">@Localizer["Name"]</th>
+
+                <th scope="col">@Localizer["Email"]</th>
+                <th scope="col">@Localizer["Roles"]</th>
+                <th scope="col" class="text-center">@Localizer["Actions"]</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +50,10 @@ else
                         
                     }
 
-                        <td style="display:flex;justify-content:center;gap:10px"> 
-                            <a  asp-action="Mange" asp-route-id="@User.Id" class="  btn btn-primary">Mange</a>
-                            <a asp-action="Edit" asp-route-id="@User.Id" class=" btn btn-primary">Modify </a>
-                            <a id="del" onclick="Delete(event)"  class=" btn btn-danger Js-Deleted" data-id="@User.Id" >Delete </a>
+                        <td style="display:flex;justify-content:center;gap:10px">
+                        <a asp-action="Mange" asp-route-id="@User.Id" class="  btn btn-primary">@Localizer["UpdateRoles"]</a>
+                        <a asp-action="Edit" asp-route-id="@User.Id" class=" btn btn-primary">@Localizer["UpdateData"] </a>
+                        <a id="del" onclick="Delete(event)" class=" btn btn-danger Js-Deleted" data-id="@User.Id">@Localizer["Delete"] </a>
                         </td>
                  
                     </tr>
@@ -52,7 +63,7 @@ else
         
     
 }
-@section Scripts{
+@*@section Scripts{
     <script>
         const Delete=(e)=>{
             Swal.fire({
@@ -83,5 +94,66 @@ else
                 }
             })
         }
+    </script>
+}*@
+
+
+@section Scripts{
+    <script>
+        function Run() {
+            var btnToDelete = document.getElementsByClassName("Js-Deleted");
+            for (let i = 0; i < btnToDelete.length; i++) {
+                btnToDelete[i].onclick = function () {
+                    var btn = btnToDelete[i];
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "That You delete This User!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#df4759',
+                        cancelButtonColor: '#42ba96',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            console.log("try");
+                            fetch(`/Admin/Users/Delete?id=${btn.getAttribute("data-id")}`, {
+                                method: 'DELETE',
+
+                            })
+                                .then(response => {
+                                    if (response.ok) {
+                                        console.log("also try");
+
+                                        Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'User Deleted Successfuly',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                        console.log('DELETE request successful');
+                                        btn.parentElement.parentElement.remove();
+                                    } else {
+                                        console.log("bad try");
+
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Something went wrong while Deleting this User!',
+                                        })
+                                    }
+
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    console.log("error happend")
+                                });
+                        }
+                    })
+
+                }
+            }
+        }
+        Run();
     </script>
 }

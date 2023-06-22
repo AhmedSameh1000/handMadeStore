@@ -1,15 +1,16 @@
 ﻿@page
+@using Microsoft.Extensions.Localization;
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
 }
-
-<h1>@ViewData["Title"]</h1>
+@inject IStringLocalizer<RegisterModel> localizer
+<h1>@localizer[ViewData["Title"].ToString()]</h1>
 
 <div class="row">
     <div class="col-md-7">
         <form id="registerForm" class="row" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h2>@localizer["Create a new account"].</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating col-12 p-1">
@@ -52,12 +53,12 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@localizer["Register"]</button>
         </form>
     </div>
     <div class="col-md-5 ">
         <section>
-            <h3>Use another service to register.</h3>
+            <h3>@localizer["Use another service to register"].</h3>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -78,7 +79,18 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    if (provider.Name == "Facebook")
+                                    {
+                                        <button type="submit" class="btn btn-primary col-12 btn-lg mb-2 p-2" name="provider" value="@provider.Name" title="@localizer["Log in using your"] @localizer[provider.DisplayName] @localizer["account"]"><i class="fa-brands fa-facebook"></i> @localizer[provider.DisplayName]</button>
+
+
+                                    } 
+                                    if (provider.Name == "Google")
+                                    {
+                                        <button type="submit" class="btn btn-danger col-12 btn-lg mb-2 p-2" name="provider" value="@provider.Name" title="@localizer["Log in using your"] @localizer[provider.DisplayName] @localizer["account"]"><i class="fa-brands fa-google"></i> @localizer[provider.DisplayName]</button>
+                                   
+                                    
+                                    }
                                 }
                             </p>
                         </div>

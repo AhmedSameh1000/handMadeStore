@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Identity.Models;
+using HandMadeStore.UI.Resources;
 
 namespace HandMadeStore.UI.Areas.Identity.Pages.Account
 {
@@ -65,15 +66,18 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Display(Name = "Email", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
+            [EmailAddress(ErrorMessageResourceName = "EmailError", ErrorMessageResourceType = typeof(Shared))]
             public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Display(Name = "Password", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
+            [StringLength(100, ErrorMessageResourceName = "PasswordLength", MinimumLength = 6, ErrorMessageResourceType = typeof(Shared))]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -81,7 +85,7 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Remember", ResourceType = typeof(Shared))]
             public bool RememberMe { get; set; }
         }
 

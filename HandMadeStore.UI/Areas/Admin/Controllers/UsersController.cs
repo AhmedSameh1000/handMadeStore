@@ -1,4 +1,5 @@
-﻿using Identity.Models;
+﻿using HandMadeStore.DataAccess.Repository.IRepository;
+using Identity.Models;
 using Identity.Models.AllRolesViewModel;
 using Identity.Models.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -12,21 +13,23 @@ using System.Data;
 namespace HandMadeStore.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin,SuperAdmin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserStore<ApplicationUser> _userStore;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
 
         public UsersController(UserManager<ApplicationUser> userManager
         , RoleManager<IdentityRole> roleManager,
-            IUserStore<ApplicationUser> userStore)
+            IUserStore<ApplicationUser> userStore, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _userStore = userStore;
+            _unitOfWork = unitOfWork;
             _emailStore = GetEmailStore();
         }
 
@@ -48,7 +51,7 @@ namespace HandMadeStore.UI.Areas.Admin.Controllers
                 Email = user.Email,
                 Name = user.Name,
                 Roles = _userManager.GetRolesAsync(user).Result
-            }).Where(c => c.Email != "ahmeds141000@gmail.com").ToListAsync();
+            }).Where(c => c.Email != "Admin@gmail.com").ToListAsync();
 
             return View(users);
         }
@@ -192,6 +195,9 @@ namespace HandMadeStore.UI.Areas.Admin.Controllers
         {
             var UserSelected = await _userManager.FindByIdAsync(id);
             if (UserSelected is null) return NotFound("this User not found");
+            var relatedDataOnOrdrHeader = _unitOfWork.OrderHeader.GetAll(c => c.ApplicationUserId == id);
+            _unitOfWork.OrderHeader.RemoveRange(relatedDataOnOrdrHeader);
+            _unitOfWork.Save();
             var Result = await _userManager.DeleteAsync(UserSelected);
             if (!Result.Succeeded)
             {

@@ -1,7 +1,13 @@
-﻿@model List<Product>
+﻿@using Microsoft.AspNetCore.Localization;
+@model List<Product>
 
 @{
     ViewData["Title"] = "Home Page";
+}
+@{
+    var reqCulture = Context.Features.Get<IRequestCultureFeature>();
+    var Culture = reqCulture.RequestCulture.Culture.Name;
+    var isArabic = Culture == "ar-EG";
 }
 
 <div class="row" style="margin-top:-7px;">
@@ -14,17 +20,31 @@
                         <img loading="lazy" src="@product.ImageUrl" class="card-img-top" />
                         <div class="card-body text-center">
                             <div class="pl-1">
-                                <p class="card-title h5 text-dark">@product.Category.Name</p>
-                                <p class="card-title h5 text-primary">@(product.Name.Count() > 25 ? product.Name.Substring(0, 25) : product.Name)</p>
+                                <p class="card-title h5 text-dark">@(!isArabic?product.Category.Name:product.Category.arabicName)</p>
+                              @if(!isArabic){
+                                    <p class="card-title h5 text-primary">@(product.Name.Count() > 25 ? product.Name.Substring(0, 25) : product.Name)</p>
+                              }
+                              else
+                              {
+                                    <p class="card-title h5 text-primary">@(product.arabicName.Count() > 25 ? product.Name.Substring(0, 25) : product.arabicName)</p>
+                              }
                             </div>
                             <div class="pl-1">
-                                <h5 class="card-title text-mute">Price: <b>@product.Price EGP</b></h5>
+                                @if(!isArabic){
+                                    
+                                    <h5 class="card-title text-mute">Price: <b>@product.Price EGP</b></h5>
+                                }
+                                else
+                                {
+                                    <h5 class="card-title text-mute">السعر: <b>@product.Price جم</b></h5>
+
+                                }
                             </div>
                         </div>
                     </div>
                     <div>
                         <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">
-                            Details
+                            @(isArabic ? "التفاصيل" : "Details")
                         </a>
                     </div>
                 </div>

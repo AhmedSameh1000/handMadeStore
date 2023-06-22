@@ -79,6 +79,21 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            [Required]
+            public string Name { get; set; }
+
+            [Required]
+            public string City { get; set; }
+
+            [Required, Display(Name = " street Address")]
+            public string StreetAddress { get; set; }
+
+            [Required, Display(Name = "Postal Code")]
+            public string PostalCode { get; set; }
+
+            [Required, Display(Name = "phone number")]
+            public string PhoneNumber { get; set; }
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -133,7 +148,8 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
                 {
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                        Name = info.Principal.FindFirstValue(ClaimTypes.Name),
                     };
                 }
                 return Page();
@@ -154,6 +170,12 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                user.Name = Input.Name;
+                user.Email = Input.Email;
+                user.PostalCode = Input.PostalCode;
+                user.City = Input.City;
+                user.StreetAddress = Input.StreetAddress;
+                user.PhoneNumber = Input.PhoneNumber;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -165,7 +187,7 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
                     if (result.Succeeded)
                     {
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-
+                        await _userManager.AddToRoleAsync(user, "User");
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

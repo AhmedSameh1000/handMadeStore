@@ -10,7 +10,7 @@ using System.Data;
 namespace HandMadeStore.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin,SuperAdmin")]
+    [Authorize(Roles = "Admin,SuperAdmin,Moderator")]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

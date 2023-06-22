@@ -1,5 +1,15 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.AspNetCore.Http.Extensions;
+@using Microsoft.AspNetCore.Localization;
+
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IViewLocalizer Lozalizer 
+@{
+    var reqCulture = Context.Features.Get<IRequestCultureFeature>();
+    var Culture = reqCulture.RequestCulture.Culture.Name;
+    var isArabic = Culture == "ar-EG";
+}
+<!DOCTYPE html>
+<html lang="@(isArabic?"ar":"en")">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,12 +18,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HandMadeStore.UI.styles.css" asp-append-version="true" />
     <link href="~/sweetalert2/sweetalert2.css" rel="stylesheet" />
     <link href="~/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-
+    @if (isArabic)
+    {
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="~/css//rtl.css" />
+    }
 
 </head>
 <body>
@@ -30,31 +46,54 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin Panal
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-area="Admin" asp-controller="Category" asp-action="Index" class="dropdown-item" >Categories</a></li>
-                                <li><a asp-area="Admin" asp-controller="Brand" asp-action="Index" class="dropdown-item">Brands</a></li>
-                                <li><a asp-area="Admin" asp-controller="Product" asp-action="Index" class="dropdown-item">Products</a></li>
-                                <li><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="dropdown-item">Users</a></li>
-                                <li><a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="dropdown-item">Roles</a></li>
-                                <li><a asp-area="Admin" asp-controller="Shop" asp-action="Index" class="dropdown-item">Shop</a></li>
-                            </ul>
+                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Index">@Lozalizer["Home"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </a>
-                        
+                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Contact">@Lozalizer["Contact"]</a>
                         </li>
-                       
-                    </ul>
+                      
+                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator") || User.IsInRole("SuperAdmin"))
+                        {
 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @Lozalizer["Admin Panal"]
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-area="Admin" asp-controller="Category" asp-action="Index" class="dropdown-item"> @Lozalizer["Categories"] </a></li>
+                                    <li><a asp-area="Admin" asp-controller="Brand" asp-action="Index" class="dropdown-item">@Lozalizer["Brands"]</a></li>
+                                    <li><a asp-area="Admin" asp-controller="Product" asp-action="Index" class="dropdown-item">@Lozalizer["Products"]</a></li>
+                               
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li><a asp-area="Admin" asp-controller="Users" asp-action="Index" class="dropdown-item">@Lozalizer["Users"]</a></li>
+                                        <li><a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="dropdown-item">@Lozalizer["Roles"]</a></li>
+                                    }
+                                    <li><a asp-area="Admin" asp-controller="Shop" asp-action="Index" class="dropdown-item">@Lozalizer["Shop"]</a></li>
+                                </ul>
+                            </li>
+
+                        }
+
+                        <li class="nav-item" style="direction:ltr !important">
+                                <a class="nav-link text-light" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                  @await Component.InvokeAsync("Cart")
+                            
+                                  </a>
+
+                            </li>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        
+                        @if (isArabic)
+                        {                         
+                            <li class="nav-item"><a class="nav-link text-light" href="/Customer/Home/SetCulture?lang=en-US&ReturnUrl=@Context.Request.GetEncodedPathAndQuery()">English</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link text-light" href="/Customer/Home/SetCulture?lang=ar-EG&ReturnUrl=@Context.Request.GetEncodedPathAndQuery()">العربية</a></li>
+                        }
+                    </ul>
                     <partial name="_LoginPartial"/>
                 </div>
             </div>
@@ -69,7 +108,7 @@
 
     <footer class="border-top footer text-center text-dark">
         <div class="container">
-            &copy; 2023 - HandMadeStore 
+            @Lozalizer["&copy; 2023 - HandMadeStore"]
         </div>
     </footer>
     <script src="~/sweetalert2/sweetalert2.all.js"></script>
@@ -79,6 +118,16 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js" asp-append-version="true"></script>
+    
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/signalrclients/reviews.js"></script>
+    <script src="~/js/signalrclients/Message.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

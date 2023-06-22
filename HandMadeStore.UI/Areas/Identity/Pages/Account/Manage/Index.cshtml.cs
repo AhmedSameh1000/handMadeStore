@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Identity.Models;
+using HandMadeStore.DataAccess.Data;
 
 namespace HandMadeStore.UI.Areas.Identity.Pages.Account.Manage
 {
@@ -17,13 +18,16 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _applicationDbContext;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext applicationDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _applicationDbContext = applicationDbContext;
         }
 
         /// <summary>
@@ -116,41 +120,12 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account.Manage
                 await LoadAsync(user);
                 return Page();
             }
-            var Name = user.Name;
-            if (Input.Name != Name)
-            {
-                user.Name = Input.Name;
-                await _userManager.UpdateAsync(user);
-            }
-            var City = user.City;
-            if (Input.City != City)
-            {
-                user.City = Input.City;
-                await _userManager.UpdateAsync(user);
-            }
-            var PostalCode = user.PostalCode;
-            if (Input.PostalCode != PostalCode)
-            {
-                user.PostalCode = Input.PostalCode;
-                await _userManager.UpdateAsync(user);
-            }
-
-            var StreetAddress = user.StreetAddress;
-            if (Input.StreetAddress != StreetAddress)
-            {
-                user.StreetAddress = Input.StreetAddress;
-                await _userManager.UpdateAsync(user);
-            }
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
-            {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
-                }
-            }
+            user.Name = Input.Name;
+            user.City = Input.City;
+            user.PostalCode = Input.PostalCode;
+            user.StreetAddress = Input.StreetAddress;
+            user.PhoneNumber = Input.PhoneNumber;
+            await _applicationDbContext.SaveChangesAsync();
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

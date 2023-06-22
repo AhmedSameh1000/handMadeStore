@@ -11,8 +11,14 @@ namespace HandMadeStore.Models
         [Required(ErrorMessage = "Enter product name"), StringLength(50), Display(Name = "Product Name")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Enter product name"), StringLength(50), Display(Name = "Product Arabic Name")]
+        public string arabicName { get; set; }
+
         [Required(ErrorMessage = "Enter description"), StringLength(300)]
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Enter description"), StringLength(300), Display(Name = "Product Arabic Description")]
+        public string arabicDescription { get; set; }
 
         [Required(ErrorMessage = "Enter price"), Range(1, Double.PositiveInfinity)]
         public double? Price { get; set; }

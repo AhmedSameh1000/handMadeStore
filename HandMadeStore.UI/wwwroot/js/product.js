@@ -1,30 +1,34 @@
-﻿$(document).ready(function () {
+﻿var isarabic = document.getElementById("culture").getAttribute("data-culture")
+var ProductName = isarabic == "True" ? "arabicName" : "name";
+var CategoryName = isarabic == "True" ? "category.arabicName" : "category.name";
+var BrandName = isarabic == "True" ? "brand.arabicName" : "brand.name";
+
+$(document).ready(function () {
     LoadData();
 });
-
 const LoadData = () => {
     $('#mydata').DataTable({
         "ajax": {
             "url": "/Admin/Product/GetAll"
         },
         columns: [
-            { "data": "name", width: "25%" },
+            { "data": ProductName, width: "25%" },
             { "data": "price", width: "10%" },
-            { "data": "category.name", width: "20%" },
-            { "data": "brand.name", width: "20%" },
+            { "data": CategoryName, width: "20%" },
+            { "data": BrandName, width: "20%" },
             { "data": "createdDate", width: "10%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return `    <div class="d-flex justify-content-center gap-3">
-                                <a class="btn btn-warning " href="/Admin/Product/Upsert?id=${data}">
-                                <i class="fa-solid fa-pen-to-square me-1"></i>
-                                </a>
-                                <a class="btn btn-danger " onclick=Deleteproduct(${data},event)>
-                               <i class="fa-solid fa-trash-can me-1"></i>
-                                </a>
-                            </div>
-                            `
+                                        <a class="btn btn-warning " href="/Admin/Product/Upsert?id=${data}">
+                                        <i class="fa-solid fa-pen-to-square me-1"></i>
+                                        </a>
+                                        <a class="btn btn-danger " onclick=Deleteproduct(${data},event)>
+                                       <i class="fa-solid fa-trash-can me-1"></i>
+                                        </a>
+                                    </div>
+                                    `
                 },
                 width: "10%"
             }
@@ -38,11 +42,35 @@ const LoadData = () => {
                 targets: 0,
                 className: 'dt-left'
             }
-        ]
+        ],
+        dom: 'Bfrtip',
+        responsive: true,
+        lengthChange: false,
+        autoWidth: false,
+        buttons: ["copy",
+            {
+                extend: 'excel',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4]
+                }
+            }]
     });
+    DataTable.buttons().container().prpendTo("#dataTable_Wrapper");
 }
+
 const Deleteproduct = async (e, event) => {
-    
     Swal.fire({
         title: 'Are you sure?',
         text: "That You delete This Product!",

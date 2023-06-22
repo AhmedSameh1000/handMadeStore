@@ -1,0 +1,29 @@
+﻿@using HandMadeStore.Models.Models;
+@using HandmadeStore.Models.Models
+@using Microsoft.AspNetCore.Localization;
+@model Review
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var culture = requestCulture.RequestCulture.Culture.Name;
+    var isArabic = culture == "ar-EG";
+}
+<div class="card">
+    <form method="post">
+        <div class="text-center my-2">
+            <textarea id="test" asp-for="ReviewText" class="w-75"></textarea>
+            <button onclick="func()" asp-action="AddReview" type="submit" class="btn btn-info w-50">@(!isArabic ? "Add Review" : "أضف رأيك في هذا المنتج")</button>
+        </div>
+    </form>
+    <partial name="_Reviews" />
+</div>
+@section Srcipt{
+    <script>
+var text=document.getElementById("test");
+function func(){
+    if(text.textContent==""){
+        event.preventDefault();
+    }
+}
+    </script>
+
+}

@@ -1,0 +1,11 @@
+﻿@using HandMadeStore.Models.Models.DTOs;
+@model MessageVM
+<h2>Send Message To Admin</h2>
+<div class="card">
+    <form method="post">
+        <div class="text-center my-2 p-2">
+            <textarea asp-for="MessageText"  class="w-75"></textarea>
+            <button asp-action="Send" type="submit" class="btn btn-info w-50">Send Message</button>
+        </div>
+    </form>
+</div>

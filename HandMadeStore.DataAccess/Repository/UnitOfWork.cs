@@ -1,5 +1,6 @@
 ﻿using HandMadeStore.DataAccess.Data;
 using HandMadeStore.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Http;
 
 namespace HandMadeStore.DataAccess.Repository
 {
@@ -20,19 +21,21 @@ namespace HandMadeStore.DataAccess.Repository
 
         public IOrderDetailRepository OrderDetail { get; private set; }
 
+        public IReviewRepository Review { get; private set; }
         private readonly ApplicationDbContext _context;
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             Category = new CategoryRepository(context);
             Brand = new BrandRepository(context);
             Product = new ProductRepository(context);
             Shop = new ShopRepository(context);
-            CartItem = new CartItemRepository(context);
+            CartItem = new CartItemRepository(context, httpContextAccessor);
             ApplicationUser = new ApplicationUserRepository(context);
             OrderHeader = new OrderHeaderRepository(context);
             OrderDetail = new OrderDetailRepository(context);
+            Review = new ReviewRepository(context);
         }
 
         public void Save()

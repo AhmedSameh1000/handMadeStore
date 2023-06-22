@@ -17,6 +17,8 @@ namespace HandMadeStore.DataAccess.Repository.IRepository
         IOrderDetailRepository OrderDetail { get; }
         IApplicationUserRepository ApplicationUser { get; }
 
+        IReviewRepository Review { get; }
+
         void Save();
     }
 }

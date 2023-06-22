@@ -19,10 +19,22 @@
                 <input asp-for="Product.Name" class="form-control" />
                 <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
+
+             <div class="mb-3">
+                <label asp-for="Product.arabicName"></label>
+                <input asp-for="Product.arabicName" class="form-control" />
+                <span asp-validation-for="Product.arabicName" class="text-danger"></span>
+            </div>
+
             <div class="mb-3">
                 <label asp-for="Product.Description"></label>
                 <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
                 <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>     
+            <div class="mb-3">
+                <label asp-for="Product.arabicDescription"></label>
+                <textarea asp-for="Product.arabicDescription" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Product.arabicDescription" class="text-danger"></span>
             </div>
         </div>
         <div class="col-2">

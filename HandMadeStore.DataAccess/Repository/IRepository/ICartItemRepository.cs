@@ -13,5 +13,7 @@ namespace HandMadeStore.DataAccess.Repository.IRepository
         void Increment(CartItem cartItem, int amount);
 
         void Decrement(CartItem cartItem, int amount);
+
+        int GetPiecesCount();
     }
 }

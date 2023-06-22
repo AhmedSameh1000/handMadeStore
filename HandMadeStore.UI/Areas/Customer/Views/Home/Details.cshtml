@@ -1,7 +1,12 @@
 ﻿@using HandMadeStore.Models.Models;
+@using Microsoft.AspNetCore.Localization;
 @model CartItem
 @{
     ViewData["Title"] = "Details";
+}@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var culture = requestCulture.RequestCulture.Culture.Name;
+    var isArabic = culture == "ar-EG";
 }
 <form method="post">
     <input asp-for="ProductId" hidden />
@@ -9,15 +14,15 @@
         <div class="card h-100 px-1">
             <div class="card-header bg-dark text-light row">
                 <div class="col-12 col-md-6">
-                    <h2 class="text-white">@Model.Product.Name</h2>
+                    <h2 class="text-white">@(!isArabic ? Model.Product?.Name : Model.Product?.arabicName)</h2>
                 </div>
                 <div class="col-12 col-md-6 text-end">
-                    <h2 class="text-warning"> By : @Model.Product.Brand.Name</h2>
+                    <h2 class="text-warning seller"> @(!isArabic ? "Seller" : "البائع") : @Model.Product.Brand.Name</h2>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body pb-0">
                 <div class="container-fluid">
-                    <span style="font-size:20px;" class="badge bg-dark">@Model.Product.Category.Name</span>
+                    <span style="font-size:20px;" class="badge bg-dark">@(!isArabic ? Model.Product.Category.Name : Model.Product.Category.arabicName)</span>
                     <div class="row">
                         <div style="overflow:hidden" class="col-12 col-lg-7 text-center">
                             <img src="@Model.Product.ImageUrl" class="img-view" />
@@ -26,7 +31,7 @@
                             <div class="row">
                                 <div class="row text-center pl-2">
                                     <div class="p-1 col-3 bg-secondary border-bottom">
-                                        <div class="text-start">Quantity</div>
+                                        <div class="@(!isArabic?"text-start":"unset")">@(!isArabic ? "Quantity" : "الكمية")</div>
                                     </div>
                                     <div class="p-1 col-3 bg-secondary border-bottom">
                                         <div>1-10</div>
@@ -40,7 +45,7 @@
                                 </div>
                                 <div class="row text-center pl-2" style="color:maroon; font-weight:bold">
                                     <div class="p-1 col-3 bg-secondary">
-                                        <div class="text-start">Price</div>
+                                        <div class="@(!isArabic?"text-start":"unset")">@(!isArabic ? "Price" : "السعر")</div>
                                     </div>
                                     <div class="p-1 col-3 bg-secondary">
                                         <div>@Model.Product.Price</div>
@@ -54,23 +59,23 @@
                                 </div>
                                 <div class="row ps-0 px-0">
                                     <div class="col-2 pt-2 ">
-                                        <label asp-for="Product.Description" class="control-label"> </label>
+                                        <label class="control-label">@(!isArabic ? "Description" : "الوصف") </label>
                                     </div>
                                     <div class="col-10 pt-2">
-                                        <p class="text-dark">@Html.Raw(Model.Product.Description) </p>
+                                        <p class="text-dark">@Html.Raw(!isArabic?Model.Product.Description:Model.Product.arabicDescription) </p>
                                     </div>
                                     <div>
                                         <div class="row ">
                                             <div class="col-2 pt-1">
-                                                <label asp-for="Count" class="control-label"> </label>
+                                                <label class="control-label"> @(!isArabic ? "Count" : "العدد")</label>
                                             </div>
                                             <div class="col-10">
                                                 <input type="number" min="1" asp-for="Count" class="form-control p-1" />
                                                 <span asp-validation-for="Count" class="text-danger"></span>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary form-control p-1 my-2">Add to Cart</button>
-                                        <a asp-action="Index" class="btn btn-dark form-control  p-1">Back to List</a>
+                                        <button type="submit" class="btn btn-primary form-control p-1 my-2">@(!isArabic ? "Add to Cart" : "أضف إلى سلة المشتريات")</button>
+                                        <a asp-action="Index" class="btn btn-dark form-control  p-1">@(!isArabic ? "Back to List" : "الرجوع إلى صفحة المنتجات")</a>
                                     </div>
                                 </div>
                             </div>
@@ -82,9 +87,11 @@
         </div>
     </div>
 </form>
-
+<partial name="_Review" model="new Review()" />
 <style>
     .img-view {
+        width:50%;
+        margin-top:-7.5vh;
         transition: all .6s ease-in-out;
     }
 

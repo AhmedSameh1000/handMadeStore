@@ -4,6 +4,7 @@ using HandMadeStore.Models.Models;
 using HandMadeStore.Models.Models.DTOs;
 using HandMadeStore.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Stripe.Checkout;
@@ -17,11 +18,14 @@ namespace HandMadeStore.UI.Areas.Customer.Controllers
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IEmailSender _emailSender;
+
         public CartVM CartVM { get; set; }
 
-        public CartController(IUnitOfWork unitOfWork)
+        public CartController(IUnitOfWork unitOfWork, IEmailSender emailSender)
         {
             _unitOfWork = unitOfWork;
+            _emailSender = emailSender;
         }
 
         public IActionResult Index()
@@ -150,9 +154,12 @@ namespace HandMadeStore.UI.Areas.Customer.Controllers
                 _unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved, SD.PaymentStatusApproved);
                 _unitOfWork.Save();
             }
+            _emailSender.SendEmailAsync(OrderHeader.ApplicationUser.Email, "New Order Hand Made Store", $"<h2>Order Number #{OrderHeader.Id}... Total : {OrderHeader.OrderTotal} EGP </h2>");
             var CartItems = _unitOfWork.CartItem.GetAll(c => c.ApplicationUserId == OrderHeader.ApplicationUserId).ToList();
             _unitOfWork.CartItem.RemoveRange(CartItems);
             _unitOfWork.Save();
+            HttpContext.Session.SetInt32(SD.CartSession, 0);
+
             return View(id);
         }
 
@@ -161,6 +168,8 @@ namespace HandMadeStore.UI.Areas.Customer.Controllers
             var CartItem = _unitOfWork.CartItem.GetFirstOrDefault(c => c.Id == CartId);
             _unitOfWork.CartItem.Increment(CartItem, 1);
             _unitOfWork.Save();
+            HttpContext.Session.SetInt32(SD.CartSession, _unitOfWork.CartItem.GetPiecesCount());
+
             return RedirectToAction("Index");
         }
 
@@ -176,6 +185,8 @@ namespace HandMadeStore.UI.Areas.Customer.Controllers
                 _unitOfWork.CartItem.Decrement(CartItem, 1);
             }
             _unitOfWork.Save();
+            HttpContext.Session.SetInt32(SD.CartSession, _unitOfWork.CartItem.GetPiecesCount());
+
             return RedirectToAction("Index");
         }
 
@@ -184,6 +195,7 @@ namespace HandMadeStore.UI.Areas.Customer.Controllers
             var CartItem = _unitOfWork.CartItem.GetFirstOrDefault(c => c.Id == CartId);
             _unitOfWork.CartItem.Remove(CartItem);
             _unitOfWork.Save();
+            HttpContext.Session.SetInt32(SD.CartSession, _unitOfWork.CartItem.GetPiecesCount());
             return RedirectToAction("Index");
         }
 

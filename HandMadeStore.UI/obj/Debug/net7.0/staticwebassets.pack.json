@@ -89,6 +89,10 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\css\\rtl.css",
+      "PackagePath": "staticwebassets\\css\\rtl.css"
+    },
+    {
       "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -101,8 +105,20 @@
       "PackagePath": "staticwebassets\\js\\Shop.js"
     },
     {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\js\\SignalrClients\\Message.js",
+      "PackagePath": "staticwebassets\\js\\SignalrClients\\Message.js"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\js\\SignalrClients\\Reviews.js",
+      "PackagePath": "staticwebassets\\js\\SignalrClients\\Reviews.js"
+    },
+    {
       "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\js\\product.js",
       "PackagePath": "staticwebassets\\js\\product.js"
+    },
+    {
+      "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\js\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\js\\signalr\\dist\\browser\\signalr.min.js"
     },
     {
       "Id": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\wwwroot\\js\\site.js",

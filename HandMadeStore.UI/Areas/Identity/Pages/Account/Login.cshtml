@@ -4,13 +4,14 @@
 @{
     ViewData["Title"] = "Log in";
 }
-
-<h1>@ViewData["Title"]</h1>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<LoginModel> localizer
+<h1>@localizer[ViewData["Title"].ToString()]</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2>@localizer["Use a local account to log in"]</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
@@ -30,17 +31,17 @@
                     </label>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">@localizer["Log in"]</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">@localizer["Forgot your password?"]</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@localizer["Register as a new user"]</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">@localizer["Resend email confirmation"]</a>
                     </p>
                 </div>
             </form>
@@ -48,7 +49,7 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h3>Use another service to log in.</h3>
+            <h3>@localizer["Use another service to log in"].</h3>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -67,7 +68,18 @@
                             <p>
                                 @foreach (var provider in Model.ExternalLogins!)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    if (provider.Name == "Facebook")
+                                    {
+                                        <button type="submit" class="btn btn-primary col-12 btn-lg mb-2 p-2" name="provider" value="@provider.Name" title="@localizer["Log in using your"] @localizer[provider.DisplayName] @localizer["account"]"><i class="fa-brands fa-facebook"></i> @localizer[provider.DisplayName]</button>
+
+
+                                    }
+                                    if (provider.Name == "Google")
+                                    {
+                                        <button type="submit" class="btn btn-danger col-12 btn-lg mb-2 p-2" name="provider" value="@provider.Name" title="@localizer["Log in using your"] @localizer[provider.DisplayName] @localizer["account"]"><i class="fa-brands fa-google"></i> @localizer[provider.DisplayName]</button>
+
+
+                                    }
                                 }
                             </p>
                         </div>

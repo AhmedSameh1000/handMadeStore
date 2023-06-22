@@ -1,0 +1,16 @@
+﻿body {
+    direction: rtl !important;
+    font-family: "Cairo";
+}
+
+.dropdowm-item {
+    text-align: center !important;
+}
+
+.form-floating > label {
+    font-weight: bold;
+    left: unset;
+    width: unset;
+    height: unset;
+    transform-origin: unset;
+}

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Identity.Models;
+using HandMadeStore.UI.Resources;
 
 namespace HandMadeStore.UI.Areas.Identity.Pages.Account
 {
@@ -71,38 +72,45 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            [Required]
+            [Display(Name = "Name", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
             public string Name { get; set; }
 
-            [Required]
+            [Display(Name = "City", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
             public string City { get; set; }
 
-            [Required]
+            [Display(Name = "StreetAddress", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
             public string StreetAddress { get; set; }
 
-            [Required, Display(Name = "Postal Code")]
+            [Display(Name = "PostalCode", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
             public string PostalCode { get; set; }
 
-            [Required, Display(Name = "phone number")]
+            [Display(Name = "PhoneNumber", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
             public string PhoneNumber { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Email", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
+            [EmailAddress(ErrorMessageResourceName = "EmailError", ErrorMessageResourceType = typeof(Shared))]
             public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            ///
+
+            [Display(Name = "Password", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
+            [StringLength(100, ErrorMessageResourceName = "PasswordLength", MinimumLength = 6, ErrorMessageResourceType = typeof(Shared))]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
             public string Password { get; set; }
 
             /// <summary>
@@ -110,8 +118,9 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "ConfirmPassword", ResourceType = typeof(Shared))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Shared))]
+            [Compare("Password", ErrorMessageResourceName = "CompareError", ErrorMessageResourceType = typeof(Shared))]
             public string ConfirmPassword { get; set; }
         }
 
@@ -125,6 +134,7 @@ namespace HandMadeStore.UI.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser()

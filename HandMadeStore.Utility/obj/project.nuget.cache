@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NC/1qTEoQMzzUuo4aH3yQDbiXC3jRVivwqJC/b4dfLfOJLeLJuwxfSPOg5G9oQwUpIKyVaIWrCfZ4bihXN8i2w==",
+  "dgSpecHash": "uyHu6NwaYif/O8RImRkua+G4YPTs9xcWTK8aKTqL+iRXJRjDmTwztrSarQ4Jam6amvwmONhWmzchLResHwSrsw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj",
+  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\mailkit\\4.1.0\\mailkit.4.1.0.nupkg.sha512",

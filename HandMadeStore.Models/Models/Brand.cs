@@ -9,7 +9,7 @@ namespace HandMadeStore.Models
         [Required(ErrorMessage = "Enter Brand name"), StringLength(50), Display(Name = "Brand Name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Enter Brand name"), StringLength(50), Display(Name = "Brand Name")]
+        [Required(ErrorMessage = "Enter Brand name"), StringLength(50), Display(Name = "Brand Arabic Name")]
         public string arabicName { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;

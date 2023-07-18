@@ -1105,11 +1105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj",
+      "projectUniqueName": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj",
       "projectName": "HandMadeStore.Utility",
-      "projectPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj",
+      "projectPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj",
       "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Utility\\obj\\",
+      "outputPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1167,7 +1167,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mxivDor8hBIZdH62nXdpFiWzZjqBAtpv7JCPXQu6THwsPcUt7uIerPMv1YaiaXyZD3xOwEljKXekP8/30tvn+g==",
+  "dgSpecHash": "32MuStoBHBSnv/5RGxibaJGu0nhWPE1i3PMZt6xX5ouIrxXOh20y1UbHYFIOXO6burKON3MfVBiiwY9qxJR/cQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.DataAccess\\HandMadeStore.DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.DataAccess\\HandMadeStore.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

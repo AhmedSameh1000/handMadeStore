@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vDuTawgK52bHtvwe31zFn+Dbn+H2wz7rewexv5zbSF/CtHeupMx1u43esL2gf+gbg7rtxefOYgNtsZOnk+YNAQ==",
+  "dgSpecHash": "cLC5BHo4RRTPnCf9sgSxP201UjXZ0aRzCWxlzOqMyngBsrv4KyUldQLUuF12wV8+GnYIHd3f9LiwTyW8Kp0bAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\HandMadeStore.UI.csproj",
+  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.UI\\HandMadeStore.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmed\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Ahmed\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

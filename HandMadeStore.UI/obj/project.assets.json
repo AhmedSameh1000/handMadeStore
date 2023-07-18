@@ -13302,11 +13302,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\HandMadeStore.UI.csproj",
+      "projectUniqueName": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.UI\\HandMadeStore.UI.csproj",
       "projectName": "HandMadeStore.UI",
-      "projectPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\HandMadeStore.UI.csproj",
+      "projectPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.UI\\HandMadeStore.UI.csproj",
       "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.UI\\obj\\",
+      "outputPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -13317,21 +13317,21 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.DataAccess\\HandMadeStore.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.DataAccess\\HandMadeStore.DataAccess.csproj"
+            "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.DataAccess\\HandMadeStore.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.DataAccess\\HandMadeStore.DataAccess.csproj"
             },
-            "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Models\\HandMadeStore.Models.csproj": {
-              "projectPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Models\\HandMadeStore.Models.csproj"
+            "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Models\\HandMadeStore.Models.csproj": {
+              "projectPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Models\\HandMadeStore.Models.csproj"
             },
-            "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj": {
-              "projectPath": "C:\\Users\\Ahmed\\Desktop\\lastAndList\\HandMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj"
+            "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj": {
+              "projectPath": "C:\\Users\\Ahmed\\Desktop\\datya\\handMadeStore\\HandMadeStore.Utility\\HandMadeStore.Utility.csproj"
             }
           }
         }
@@ -13410,7 +13410,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
